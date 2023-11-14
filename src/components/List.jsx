@@ -1,15 +1,18 @@
 import Video from "./Video"
 
-const List =()=>{
+const List =({videos})=>{
 
-    const arr= [1,2,3,4,5]
+// console.log(videos)
 
-    return <div>
-
-        {
-            arr.map(item => <Video/>)
-        }
-    </div>
+if(videos.length ==0) return <h1>Loading...</h1>
+return[
+     
+    <>
+     {videos.map((video, idx)=> <Video key={idx} videoItem={video}/>)}
+    
+    </>
+]
+    
 }
 
 export default List

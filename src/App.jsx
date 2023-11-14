@@ -1,29 +1,50 @@
+import { useEffect, useState } from "react"
 import List from "./components/List"
 import MainVideo from "./components/MainVideo"
 import Search from "./components/Search"
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
 import { Container, Row,Col } from "react-bootstrap"
+import youtube from "./api/youtube"
+
+
+//AIzaSyDuZGboufPQ2aNq6cXNeFRNhNCucusWPIY
 
 const App=()=>{
 
+  const[videos ,setVideos] =useState([])
+  const[selectedVideo, setSelectetedVideo] = useState('')
+
+  async function handleSubmit(searchTerm){
+
+   const response = await youtube.get("search",{
+      params:{
+        part:"snippet",
+        maxResult:5,
+        key:"AIzaSyDuZGboufPQ2aNq6cXNeFRNhNCucusWPIY",
+        q:searchTerm
+      }
+    })
+    setVideos(response.data.items)
+    setSelectetedVideo(response.data.items[0])
+
+  }
+
+  useEffect (()=>{
+        handleSubmit('srk')
+        
+  },[])
+
+
+
   return <Container>
-    {/* <h1>Hello</h1>
-    <Search />
-    <MainVideo />
-    <List /> */}
-     
-     
       <Row >
-        <Search/>
+        <Search onSubmit={handleSubmit}/>
       </Row>
       <Row >
         <Col sm="8" xs="12"  >
-          <MainVideo/>
+          <MainVideo mainVideo={selectedVideo}/>
         </Col>
         <Col sm="4" xs="12"  >
-          <List/>
+          <List  videos={videos}/>
         </Col>
         </Row>
      </Container>
