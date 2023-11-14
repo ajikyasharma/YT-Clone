@@ -33,6 +33,10 @@ const App=()=>{
         
   },[])
 
+  const onVideoChange=(data)=>{
+    setSelectetedVideo(data)
+  }
+
 
 
   return <Container>
@@ -44,7 +48,7 @@ const App=()=>{
           <MainVideo mainVideo={selectedVideo}/>
         </Col>
         <Col sm="4" xs="12"  >
-          <List  videos={videos}/>
+          <List  videos={videos}  onVideoChange={onVideoChange}/>
         </Col>
         </Row>
      </Container>

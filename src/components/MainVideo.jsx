@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 const MainVideo =({mainVideo})=>{
   
-console.log(mainVideo)
+
 if(mainVideo.id == null) return <h1>Loading...</h1>
 
 
@@ -18,7 +18,7 @@ if(mainVideo.id == null) return <h1>Loading...</h1>
         <Card.Text>
           {mainVideo.snippet.description}
         </Card.Text>
-        {/* <Button variant="primary">Go somewhere</Button> */}
+        
       </Card.Body>
     </Card>
     </div>

@@ -3,11 +3,11 @@ import { Container, Row,Col } from "react-bootstrap"
 import Image from 'react-bootstrap/Image';
 
 
-const Video =({videoItem})=>{
+const Video =({videoItem,onVideoChange})=>{
     
 
     return <div className="mb-3 mt-3">
-        <Container>
+        <Container onClick={()=>onVideoChange(videoItem)}>
         <Row>
             <Col xs={8} md={8} lg={8}>
             <Image fluid src={videoItem.snippet.thumbnails.high.url} />
