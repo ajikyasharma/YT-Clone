@@ -18,7 +18,7 @@ const App=()=>{
    const response = await youtube.get("search",{
       params:{
         part:"snippet",
-        maxResult:5,
+        maxResults:5,
         key:"AIzaSyDuZGboufPQ2aNq6cXNeFRNhNCucusWPIY",
         q:searchTerm
       }
